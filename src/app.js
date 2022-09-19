@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const categoriesRoutes = require("./routes/categories.route");
-// const transactionsRoutes = require("./routes/transactions.route")
+const transactionsRoutes = require("./routes/transactions.route");
 const mongoose = require("mongoose");
 const logs = require("./helpers/Logs");
 const app = express();
@@ -19,6 +19,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/categoria", categoriesRoutes);
+app.use("/transacao", transactionsRoutes);
 
 const port = process.env.PORT;
 app.listen(port, () => logs.success("Aplicação iniciada na porta " + port));

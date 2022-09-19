@@ -10,7 +10,7 @@ module.exports = {
       return res.status(200).json(newCategory);
     } catch (error) {
       Logs.error("Ocorreu um erro " + error.message);
-      return res.status(500).json("Ocorreu um erro ao criar uma transação.");
+      return res.status(500).json("Ocorreu um erro ao criar uma categoria.");
     }
   },
   async index(req, res) {
