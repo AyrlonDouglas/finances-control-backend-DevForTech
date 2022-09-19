@@ -23,3 +23,5 @@ app.use("/transacao", transactionsRoutes);
 
 const port = process.env.PORT;
 app.listen(port, () => logs.success("Aplicação iniciada na porta " + port));
+
+module.exports = app;
