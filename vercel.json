@@ -3,24 +3,24 @@
   "env": {},
   "builds": [
     {
-      "src": "src/index.js",
+      "src": "src/app.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/transacao/(.*)",
-      "dest": "src/index.js",
+      "dest": "src/app.js",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     },
     {
       "src": "/categoria/(.*)",
-      "dest": "src/index.js",
+      "dest": "src/app.js",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     },
     {
       "src": "/(.*)",
-      "dest": "src/index.js",
+      "dest": "src/app.js",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
     }
   ]
