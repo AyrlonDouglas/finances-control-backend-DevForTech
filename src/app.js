@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const cors = require("cors");
 const express = require("express");
 const categoriesRoutes = require("./routes/categories.route");
 const transactionsRoutes = require("./routes/transactions.route");
@@ -16,7 +16,7 @@ const app = express();
     logs.error(`Erro ao conectar com o banco de dados: ${error.message}`);
   }
 })();
-
+app.use(cors());
 app.use(express.json());
 app.use("/categoria", categoriesRoutes);
 app.use("/transacao", transactionsRoutes);
