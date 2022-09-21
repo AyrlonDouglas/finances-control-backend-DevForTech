@@ -49,7 +49,7 @@ module.exports = {
       const findTransaction = await Transaction.find({ categoria: id });
 
       if (findTransaction.length > 0) {
-        return res.json("Categoria sendo usada em uma transação.");
+        return res.status(500).json("Categoria sendo usada em uma transação.");
       } else {
         const deleteCategory = await Category.findByIdAndDelete(id);
         return res.status(200).json(deleteCategory);
