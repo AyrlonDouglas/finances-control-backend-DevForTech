@@ -1,5 +1,6 @@
 const Logs = require("../helpers/Logs");
 const Category = require("../models/categories.model");
+const Transaction = require("../models/transactions.model");
 module.exports = {
   async store(req, res) {
     try {
@@ -44,8 +45,15 @@ module.exports = {
   async delete(req, res) {
     try {
       const { id } = req.params;
-      const deleteCategory = await Category.findByIdAndDelete(id);
-      return res.status(200).json(deleteCategory);
+
+      const findTransaction = await Transaction.find({ categoria: id });
+
+      if (findTransaction.length > 0) {
+        return res.json("Categoria sendo usada em uma transação.");
+      } else {
+        const deleteCategory = await Category.findByIdAndDelete(id);
+        return res.status(200).json(deleteCategory);
+      }
     } catch (error) {
       Logs.error("Ocorreu um erro " + error.message);
       return res.status(500).json("Ocorreu um erro ao atualizar categoria.");
