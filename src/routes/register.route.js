@@ -1,10 +1,8 @@
 const express = require("express");
 const routes = express.Router();
-const registerControler = require("../controllers/register.controllers")
+const { storeUser, loginUser } = require("../controllers/register.controllers")
 
-routes.post("/register", registerControler.store);
-routes.get("/", categoriesControler.index);
-
-
+routes.post("/register", storeUser);
+routes.post("/login", loginUser);
 
 module.exports = routes;
